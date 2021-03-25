@@ -1,0 +1,37 @@
+Steps to install Openssh client and Openssh server on the windows machine.
+
+=>To install OpenSSH using PowerShell, first launch PowerShell as an Administrator.
+=>Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
+=>Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+
+==================================================================================================
+
+To configure the OpenSSH server for initial use on Windows
+
+=>Launch PowerShell as an Administrator.
+=>Start-Service sshd					------ To start ssh service
+=>Set-Service -Name sshd -StartupType 'Automatic'	------ To set the service startup type Automatic
+=>Get-NetFirewallRule -Name *ssh*			------ To check the firewall rule status
+
+# Confirm the Firewall rule is configured. It should be created automatically by setup.
+# There should be a firewall rule named "OpenSSH-Server-In-TCP", which should be enabled
+# If the firewall does not exist, create one
+
+=>New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
+
+=================================================================================================================================================
+
+Q>>> ssh from linux to windows.
+
+=>First of all intall "openshh client" and "openssh server" on the window server.
+=>After intallation make sure that the openssh server is in ruuning state on the windows server.
+=>Then login to the linux server from which you want to take the access of windows server.
+=>type command >>>>ssh username@10.0.0.1
+=>Then press enter
+=>It will promt you for windows user password.
+=>Provide the user password for windows.
+=>If you are access the server for the first time using ssh then accept the required conditions.
+=>And then you have your windows server cmd open at you linux command line screen.
+
+=================================================================================================
+

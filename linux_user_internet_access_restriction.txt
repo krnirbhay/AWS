@@ -1,0 +1,5 @@
+QA> how to provide internet access to one user and not to nother on same server
+
+=> iptables -A OUTPUT -m owner --uid-owner username -j DROP	----- where username=the name of user for which you want to stop the internet access
+		Or
+We can create one no internet grp and block all the traffic for that grp and add the user to that traffic 

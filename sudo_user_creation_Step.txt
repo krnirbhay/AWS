@@ -1,0 +1,6 @@
+QA>how to create sudo user or to add user into sudo group.
+
+Login with the root user OR switch to the root user OR must have sudo access
+=>adduser newuser			----- to create user, here "newuser" means username and it can be any thing
+=>usermod -aG sudo newuser		----- to add user to the sudo group
+=>groups newuser			----- to verify user grp
